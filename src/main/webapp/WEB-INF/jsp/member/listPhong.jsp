@@ -7,6 +7,7 @@
 </div>
 <br>
 <c:url value="/editPhong" var="editPhong" />
+<c:url value="/addImgPage" var="addImgPage" />
 <div class="table-responsive" style="width: 100%"> 
             <table class="table" >
                 <tr>
@@ -29,9 +30,14 @@
                             <td>${p.diaChi}</td>
                             <td>${p.diaDiem}</td>
                             <td>${p.thongTinPhong.fomartGiaPhong()} VNĐ / day</td>
-                            <td><a href="${editPhong}/${p.id}"><button type="button" class="btn btn-info btn-xs">Xem chi tiết</button></a></td>
-                            <td><a href="#"><button type="button" class="btn btn-warning btn-xs">Hình ảnh</button></a></td>
-                            <td><a href="#"><button type="button" class="btn btn-success btn-xs">Edit</button></a></td>
+                            <td><a href=""><button type="button" class="btn btn-info btn-xs">Xem chi tiết</button></a></td>
+                            <td>
+                                <form action="${addImgPage}" method="POST">
+                                    <input type="hidden" name="idPhong" id="idPhong" value="${p.id}" >
+                                    <input type="submit" value="Hình ảnh" class="btn btn-warning btn-xs" >
+                                </form>
+                            </td>
+                            <td><a href="${editPhong}/${p.id}"><button type="button" class="btn btn-success btn-xs">Edit</button></a></td>
                             <td><a href="#"><button type="button" class="btn btn-danger btn-xs">Xóa</button></a></td>
                         </tr>
                 </c:forEach>

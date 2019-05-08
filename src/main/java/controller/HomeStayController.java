@@ -30,7 +30,11 @@ import service.HomestayOwnersService;
 public class HomeStayController {
     @Autowired
     private HomestayOwnersService userService;
-            
+    
+    @RequestMapping(value = "/")
+    public String homePage(){
+        return "account/loginPage";
+    }
     @RequestMapping(value = "/member")
     public String memberPage(){
         return "member/home";
