@@ -5,12 +5,14 @@
  */
 package service;
 
+import entity.HinhAnh;
 import entity.Phong;
 import entity.ThongTinPhong;
 import java.util.List;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import repository.HinhAnhRepository;
 import repository.PhongRepository;
 import repository.TTPhongRepository;
 
@@ -25,6 +27,9 @@ public class PhongService {
     
     @Autowired
     private TTPhongRepository tPhongRepository;
+    
+    @Autowired
+    private HinhAnhRepository hinhAnhRepo;
     
     public List<Phong> listPhong(int id){
         return (List<Phong>) phongRepo.listPhong(id);
@@ -64,5 +69,15 @@ public class PhongService {
         thongTinPhong = tPhongRepository.save(thongTinPhong);
         phong.setThongTinPhong(thongTinPhong);
         return phong;
+    }
+    
+    public void saveImg(HinhAnh hinhAnh){
+        hinhAnhRepo.save(hinhAnh);
+    }
+    public HinhAnh getHinh(int id){
+        return hinhAnhRepo.findOne(id);
+    }
+    public List<HinhAnh> listHinh(int idPhong){
+        return (List<HinhAnh>) hinhAnhRepo.list(idPhong);
     }
 }

@@ -14,6 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
@@ -40,6 +41,9 @@ public class Phong {
     @OneToOne(cascade = {CascadeType.ALL})
     @PrimaryKeyJoinColumn
     private ThongTinPhong thongTinPhong;
+    
+    @OneToMany(mappedBy = "phong",fetch = FetchType.LAZY)
+    private List<HinhAnh> hinhAnh;
     
     public Phong() {
     }
@@ -106,6 +110,14 @@ public class Phong {
 
     public void setMaPhong(String maPhong) {
         this.maPhong = maPhong;
+    }
+    
+    public List<HinhAnh> getHinhAnh() {
+        return hinhAnh;
+    }
+
+    public void setHinhAnh(List<HinhAnh> hinhAnh) {
+        this.hinhAnh = hinhAnh;
     }
 
 
